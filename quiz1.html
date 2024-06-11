@@ -59,7 +59,7 @@
             if (q3Answer.id === "q3-a2") correctAnswers++;
 
             // Calculate the grade
-            var grade = (correctAnswers / 3) * 100;
+            var grade = ((correctAnswers / 3) * 100).toFixed(2);
     
             // Display the results
             var resultsHTML = "";
@@ -78,12 +78,18 @@
                 resultsHTML += "<li>Question 3: Keep your online identity and personal information private</li>";
                 resultsHTML += "</ul>";
                 resultsHTML += "<button id='retry-button'>Retry Quiz</button>";
-            }    
+            }
+
+            // Add skip quiz button
+            resultsHTML += "<button id='skip-quiz'>Skip Quiz</button>";
+
             document.getElementById("quiz-results").innerHTML = resultsHTML;
     
             // Add event listeners for the next and retry buttons
             var nextButton = document.getElementById("next-button");
             var retryButton = document.getElementById("retry-button");
+            var skipQuizButton = document.getElementById("skip-quiz");
+
             if (nextButton) {
                 nextButton.addEventListener("click", function() {
                     window.location.href = "lesson2.html";
@@ -92,6 +98,11 @@
             if (retryButton) {
                 retryButton.addEventListener("click", function() {
                     window.location.href = "quiz1.html"; // Go back to quiz1.html
+                });
+            }
+            if (skipQuizButton) {
+                skipQuizButton.addEventListener("click", function() {
+                    window.location.href = "lesson2.html"; // Skip to lesson 2
                 });
             }
         });
