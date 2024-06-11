@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz 9: Safe Social Media Practices</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+	<header>
+		<h1>Quiz 9: Safe Social Media Practices</h1>
+	</header>
+	<main>
+		<h2>Quiz Time!</h2>
+		<div class="quiz-question">
+			<h3>What personal information should you avoid sharing on social media?</h3>
+			<ul>
+				<li><input type="radio" id="q1-a1" name="q1"><label for="q1-a1">Your favorite color</label></li>
+				<li><input type="radio" id="q1-a2" name="q1"><label for="q1-a2">Your address and phone number</label></li>
+				<li><input type="radio" id="q1-a3" name="q1"><label for="q1-a3">Your favorite food</label></li>
+			</ul>
+		</div>
+		<div class="quiz-question">
+			<h3>Why should you be cautious about accepting friend requests from people you don’t know?</h3>
+			<ul>
+				<li><input type="radio" id="q2-a1" name="q2"><label for="q2-a1">Because they might want to be your friend</label></li>
+				<li><input type="radio" id="q2-a2" name="q2"><label for="q2-a2">Because they might be strangers with bad intentions</label></li>
+				<li><input type="radio" id="q2-a3" name="q2"><label for="q2-a3">Because you might not like them</label></li>
+			</ul>
+		</div>
+		<div class="quiz-question">
+			<h3>How can you control who sees your posts on social media?</h3>
+			<ul>
+				<li><input type="radio" id="q3-a1" name="q3"><label for="q3-a1">By using privacy settings</label></li>
+				<li><input type="radio" id="q3-a2" name="q3"><label for="q3-a2">By sharing with everyone</label></li>
+				<li><input type="radio" id="q3-a3" name="q3"><label for="q3-a3">By tagging everyone</label></li>
+			</ul>
+		</div>
+		<button id="submit-quiz">Submit Quiz</button>
+		<div id="quiz-results"></div>
+	</main>
+
+	<script>
+        document.getElementById("submit-quiz").addEventListener("click", function() {
+            // Get the answers
+            var q1Answer = document.querySelector('input[name="q1"]:checked');
+            var q2Answer = document.querySelector('input[name="q2"]:checked');
+            var q3Answer = document.querySelector('input[name="q3"]:checked');
+
+            // Check if all questions are answered
+            if (!q1Answer || !q2Answer || !q3Answer) {
+                alert("Please answer all the questions before submitting the quiz.");
+                return;
+            }
+    
+            // Check the answers
+            var correctAnswers = 0;
+            if (q1Answer.id === "q1-a2") correctAnswers++;
+            if (q2Answer.id === "q2-a2") correctAnswers++;
+            if (q3Answer.id === "q3-a1") correctAnswers++;
+
+            // Calculate the grade
+            var grade = ((correctAnswers / 3) * 100).toFixed(2);
+    
+            // Display the results
+            var resultsHTML = "";
+            if (correctAnswers === 3) {
+                resultsHTML += "<h2>Congratulations! You got all 3 questions correct!</h2>";
+                resultsHTML += "<p>You're a cybersecurity superstar!</p>";
+                resultsHTML += "<p>Your grade: " + grade + "%</p>";
+                resultsHTML += "<button id='next-button'>Next: Lesson 10</button>";
+            } else {
+                resultsHTML += "<h2>Sorry, you got " + (3 - correctAnswers) + " questions wrong.</h2>";
+                resultsHTML += "<p>Your grade: " + grade + "%</p>";
+                resultsHTML += "<p>Don't worry, here are the correct answers:</p>";
+                resultsHTML += "<ul>";
+                resultsHTML += "<li>Question 1: Your address and phone number</li>";
+                resultsHTML += "<li>Question 2: Because they might be strangers with bad intentions</li>";
+                resultsHTML += "<li>Question 3: By using privacy settings</li>";
+                resultsHTML += "</ul>";
+                resultsHTML += "<button id='retry-button'>Retry Quiz</button>";
+            }
+
+            // Add skip quiz button
+            resultsHTML += "<button id='skip-quiz'>Skip Quiz</button>";
+
+            document.getElementById("quiz-results").innerHTML = resultsHTML;
+    
+            // Add event listeners for the next, retry, and skip quiz buttons
+            var nextButton = document.getElementById("next-button");
+            var retryButton = document.getElementById("retry-button");
+            var skipQuizButton = document.getElementById("skip-quiz");
+
+            if (nextButton) {
+                nextButton.addEventListener("click", function() {
+                    window.location.href = "lesson10.html";
+                });
+            }
+            if (retryButton) {
+                retryButton.addEventListener("click", function() {
+                    window.location.href = "quiz9.html"; // Go back to quiz9.html
+                });
+            }
+            if (skipQuizButton) {
+                skipQuizButton.addEventListener("click", function() {
+                    window.location.href = "lesson10.html"; // Skip to lesson 10
+                });
+            }
+        });
+    </script>
+</body>
+</html>
