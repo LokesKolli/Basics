@@ -4,39 +4,22 @@
 	<title>Lesson 1: Introduction to Security</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+
 <body>
 	<header>
 		<h1>Lesson 1: Introduction to Security</h1>
 	</header>
 	<main>
-		<h2>What is Security?</h2>
-		<p>Welcome to CyberSafe Kids! In this lesson, we're going to talk about what security means and why it's important. Security is like having a special shield that protects us from bad people who might try to hurt us or steal our information. Just like how we lock our doors at home to keep our family and belongings safe, we need to take steps to keep our online information safe too.</p>
-		<img src="security-shield.png" alt="Security Shield">
-		<h2>Why is Security Important?</h2>
-		<p>Security is important because it helps keep us safe from people who might try to hurt us or steal our information. Imagine if someone got into your email account and sent mean messages to your friends! Or what if someone stole your password and got into your favorite game? That would be very bad! But if we take steps to keep our information safe, we can prevent those bad things from happening.</p>
-
-        <button onclick="back()">Back</button>
-		<button id="main()">Main</button>
-        <button onclick="next()">Next</button>
-
-
+		<h2>Welcome to CyberSafe Kids!</h2>
+		<p>Cybersecurity is like protecting your toys and personal belongings from others. Just like you lock your toy box or keep your room door closed, you need to protect your online identity and personal information from others.</p>
+		<p>Why is cybersecurity important? Well, there are bad people out there who might try to steal your personal information or hack into your accounts. But don't worry, we'll teach you how to stay safe and have fun online!</p>
+		<button id="next-button">Next: Take the Quiz!</button>
 	</main>
-	<footer>
-		<p>Copyright © 2023 CyberSafe Kids</p>
-	</footer>
+
+	<script>
+		document.getElementById("next-button").addEventListener("click", function() {
+			window.location.href = "quiz1.html";
+		});
+	</script>
 </body>
-<script>
-    function next() {
-        // Redirect to lesson2.html
-        window.location.href = "lesson2.html";
-    }
-    function back() {
-        // Redirect to lesson2.html
-        window.location.href = "lesson1.html";
-    }
-    function main() {
-        // Redirect to lesson2.html
-        window.location.href = "index.html";
-    }
-    </script>
 </html>

@@ -1,15 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<title>Lesson 2: Protecting Your Personal Information</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <h1>This Is Quizz Time Buddy</h1>
-    
-    <img src="hey.jpg" alt="Girl in a jacket" width="500" height="600">
-    
-
+	<header>
+		<h1>Lesson 2: Protecting Your Personal Information</h1>
+	</header>
+	<main>
+		<h2>What is Personal Information?</h2>
+		<p>In this lesson, we're going to talk about personal information and why it's important to keep it private. Personal information is like a special secret that only you and your family should know. It includes things like your name, address, and phone number.</p>
+		<img src="personal-information.png" alt="Personal Information">
+		<h2>Why Should We Keep Personal Information Private?</h2>
+		<p>We need to be careful about who we share this information with, because bad people might try to use it to hurt us or steal our identity. Imagine if someone got your address and showed up at your house! Or what if someone got your phone number and started calling you mean names? That would be very bad! But if we keep our personal information private, we can prevent those bad things from happening.</p>
+		<button id="next-button">Next</button>
+		<button id="back-button">Back</button>
+		<button id="main-button">Main</button>
+	</main>
+    <script>
+		document.getElementById("next-button").addEventListener("click", function() {
+			window.location.href = "quiz2.html";
+		});
+	</script>
 </body>
 </html>
