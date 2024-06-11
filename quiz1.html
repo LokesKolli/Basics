@@ -42,15 +42,21 @@
 	<script>
         document.getElementById("submit-quiz").addEventListener("click", function() {
             // Get the answers
-            var q1Answer = document.querySelector('input[name="q1"]:checked').id;
-            var q2Answer = document.querySelector('input[name="q2"]:checked').id;
-            var q3Answer = document.querySelector('input[name="q3"]:checked').id;
+            var q1Answer = document.querySelector('input[name="q1"]:checked');
+            var q2Answer = document.querySelector('input[name="q2"]:checked');
+            var q3Answer = document.querySelector('input[name="q3"]:checked');
+
+            // Check if all questions are answered
+            if (!q1Answer || !q2Answer || !q3Answer) {
+                alert("Please answer all the questions before submitting the quiz.");
+                return;
+            }
     
             // Check the answers
             var correctAnswers = 0;
-            if (q1Answer === "q1-a2") correctAnswers++;
-            if (q2Answer === "q2-a2") correctAnswers++;
-            if (q3Answer === "q3-a2") correctAnswers++;
+            if (q1Answer.id === "q1-a2") correctAnswers++;
+            if (q2Answer.id === "q2-a2") correctAnswers++;
+            if (q3Answer.id === "q3-a2") correctAnswers++;
 
             // Calculate the grade
             var grade = (correctAnswers / 3) * 100;
@@ -60,9 +66,11 @@
             if (correctAnswers === 3) {
                 resultsHTML += "<h2>Congratulations! You got all 3 questions correct!</h2>";
                 resultsHTML += "<p>You're a cybersecurity superstar!</p>";
+                resultsHTML += "<p>Your grade: " + grade + "%</p>";
                 resultsHTML += "<button id='next-button'>Next: Lesson 2</button>";
             } else {
                 resultsHTML += "<h2>Sorry, you got " + (3 - correctAnswers) + " questions wrong.</h2>";
+                resultsHTML += "<p>Your grade: " + grade + "%</p>";
                 resultsHTML += "<p>Don't worry, here are the correct answers:</p>";
                 resultsHTML += "<ul>";
                 resultsHTML += "<li>Question 1: Protecting your online identity and personal information</li>";
@@ -74,11 +82,19 @@
             document.getElementById("quiz-results").innerHTML = resultsHTML;
     
             // Add event listeners for the next and retry buttons
-            document.getElementById("next-button").addEventListener("click", function() {
-                window.location.href = "lesson2.html";
-            });
-            document.getElementById("retry-button").addEventListener("click", function() {
-                window.location.href = "quiz1.html"; // Go back to quiz1.html
-            });
+            var nextButton = document.getElementById("next-button");
+            var retryButton = document.getElementById("retry-button");
+            if (nextButton) {
+                nextButton.addEventListener("click", function() {
+                    window.location.href = "lesson2.html";
+                });
+            }
+            if (retryButton) {
+                retryButton.addEventListener("click", function() {
+                    window.location.href = "quiz1.html"; // Go back to quiz1.html
+                });
+            }
         });
     </script>
+</body>
+</html>
