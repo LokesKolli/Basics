@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz 4: Recognizing Phishing Scams</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+	<header>
+		<h1>Quiz 4: Recognizing Phishing Scams</h1>
+	</header>
+	<main>
+		<h2>Quiz Time!</h2>
+		<div class="quiz-question">
+			<h3>What is a phishing scam?</h3>
+			<ul>
+				<li><input type="radio" id="q1-a1" name="q1"><label for="q1-a1">A fun online game</label></li>
+				<li><input type="radio" id="q1-a2" name="q1"><label for="q1-a2">An attempt to steal your personal information</label></li>
+				<li><input type="radio" id="q1-a3" name="q1"><label for="q1-a3">A type of fish</label></li>
+			</ul>
+		</div>
+		<div class="quiz-question">
+			<h3>What should you do if you receive a suspicious email?</h3>
+			<ul>
+				<li><input type="radio" id="q2-a1" name="q2"><label for="q2-a1">Click on the links</label></li>
+				<li><input type="radio" id="q2-a2" name="q2"><label for="q2-a2">Delete it immediately</label></li>
+				<li><input type="radio" id="q2-a3" name="q2"><label for="q2-a3">Forward it to your friends</label></li>
+			</ul>
+		</div>
+		<div class="quiz-question">
+			<h3>How can you verify if an email is legitimate?</h3>
+			<ul>
+				<li><input type="radio" id="q3-a1" name="q3"><label for="q3-a1">By contacting the sender through a known method</label></li>
+				<li><input type="radio" id="q3-a2" name="q3"><label for="q3-a2">By clicking on all links to check</label></li>
+				<li><input type="radio" id="q3-a3" name="q3"><label for="q3-a3">By responding to the email</label></li>
+			</ul>
+		</div>
+		<button id="submit-quiz">Submit Quiz</button>
+		<div id="quiz-results"></div>
+	</main>
+
+	<script>
+        document.getElementById("submit-quiz").addEventListener("click", function() {
+            // Get the answers
+            var q1Answer = document.querySelector('input[name="q1"]:checked');
+            var q2Answer = document.querySelector('input[name="q2"]:checked');
+            var q3Answer = document.querySelector('input[name="q3"]:checked');
+
+            // Check if all questions are answered
+            if (!q1Answer || !q2Answer || !q3Answer) {
+                alert("Please answer all the questions before submitting the quiz.");
+                return;
+            }
+    
+            // Check the answers
+            var correctAnswers = 0;
+            if (q1Answer.id === "q1-a2") correctAnswers++;
+            if (q2Answer.id === "q2-a2") correctAnswers++;
+            if (q3Answer.id === "q3-a1") correctAnswers++;
+
+            // Calculate the grade
+            var grade = ((correctAnswers / 3) * 100).toFixed(2);
+    
+            // Display the results
+            var resultsHTML = "";
+            if (correctAnswers === 3) {
+                resultsHTML += "<h2>Congratulations! You got all 3 questions correct!</h2>";
+                resultsHTML += "<p>You're a cybersecurity superstar!</p>";
+                resultsHTML += "<p>Your grade: " + grade + "%</p>";
+                resultsHTML += "<button id='next-button'>Next: Lesson 5</button>";
+            } else {
+                resultsHTML += "<h2>Sorry, you got " + (3 - correctAnswers) + " questions wrong.</h2>";
+                resultsHTML += "<p>Your grade: " + grade + "%</p>";
+                resultsHTML += "<p>Don't worry, here are the correct answers:</p>";
+                resultsHTML += "<ul>";
+                resultsHTML += "<li>Question 1: An attempt to steal your personal information</li>";
+                resultsHTML += "<li>Question 2: Delete it immediately</li>";
+                resultsHTML += "<li>Question 3: By contacting the sender through a known method</li>";
+                resultsHTML += "</ul>";
+                resultsHTML += "<button id='retry-button'>Retry Quiz</button>";
+            }
+
+            // Add skip quiz button
+            resultsHTML += "<button id='skip-quiz'>Skip Quiz</button>";
+
+            document.getElementById("quiz-results").innerHTML = resultsHTML;
+    
+            // Add event listeners for the next, retry, and skip quiz buttons
+            var nextButton = document.getElementById("next-button");
+            var retryButton = document.getElementById("retry-button");
+            var skipQuizButton = document.getElementById("skip-quiz");
+
+            if (nextButton) {
+                nextButton.addEventListener("click", function() {
+                    window.location.href = "lesson5.html";
+                });
+            }
+            if (retryButton) {
+                retryButton.addEventListener("click", function() {
+                    window.location.href = "quiz4.html"; // Go back to quiz4.html
+                });
+            }
+            if (skipQuizButton) {
+                skipQuizButton.addEventListener("click", function() {
+                    window.location.href = "lesson5.html"; // Skip to lesson 5
+                });
+            }
+        });
+    </script>
+</body>
+</html>
